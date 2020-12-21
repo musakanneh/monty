@@ -7,6 +7,9 @@
  */
 void stack(stack_t **stack, unsigned int line_number)
 {
+    (void)stack;
+    (void)line_number;
+    args.order = 1;
 }
 
 /**
@@ -16,4 +19,7 @@ void stack(stack_t **stack, unsigned int line_number)
  */
 void queue(stack_t **stack, unsigned int line_number)
 {
+    (void)stack;
+    (void)line_number;
+    args.order = 0;
 }

@@ -27,3 +27,5 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
     - it finds an error in the file
     - an error occured
 - If we can’t malloc anymore, then we print the error message Error: malloc failed, followed by a new line, and exit with status EXIT_FAILURE.
+
+## Example of the push and pall opcodes
