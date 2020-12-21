@@ -104,7 +104,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack is empty\n", line_number);
 		cleaner();
 		exit(EXIT_FAILURE);
 	}

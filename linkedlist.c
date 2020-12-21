@@ -94,15 +94,15 @@ size_t stack_size(const stack_t *h)
  */
 size_t print_dlistint(const stack_t *h)
 {
-    size_t c = 0;
+    size_t character = 0;
 
     while (h)
     {
-        c++;
+        character++;
         printf("%d\n", h->n);
         h = h->next;
     }
-    return (c);
+    return (character);
 }
 
 /**
@@ -114,7 +114,7 @@ size_t print_dlistint(const stack_t *h)
 stack_t *add_dnodeint(stack_t **head, const int n)
 {
     stack_t *new_node = NULL;
-
+    
     new_node = malloc(sizeof(stack_t));
     if (!new_node)
     {
