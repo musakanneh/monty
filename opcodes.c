@@ -1,7 +1,8 @@
 #include "monty.h"
 
 /**
- * push - a function to add data to the top of the stack
+ * push - adds data to the top of the stack
+ * breaks string into series of tokens using delimeter
  * @stack: indicating a doubly linkedlist
  * @line_number: the number line
  * 
@@ -9,7 +10,24 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-    
+    register int num;
+    char *params = strtok(NULL, "\n");
+
+    if (check_string(params) == -1)
+    {
+        fprintf(stderr, "L%u: usage push integer \n", line_number);
+        cleaner();
+        exit(EXIT_FAILURE);
+    }
+    num = atoi(params);
+    if (args.order == 1)
+    {
+        add_dnodeint(stack, num);
+    }
+    else
+    {
+        add_dnodeint_end(stack, num);
+    }
 }
 
 /**
@@ -21,7 +39,13 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-
+    if (!*stack)
+    {
+        fprintf(stderr, "L%u: Can't pop from an empty stack \n", line_number);
+        cleaner();
+        exit(EXIT_FAILURE);
+    }
+    delete_dnodeint_at_index(stack, 0);
 }
 
 /**
@@ -31,8 +55,9 @@ void pop(stack_t **stack, unsigned int line_number)
  * 
  * Return: Nothing.
  */
-void push(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
+    
 }
 
 /**
