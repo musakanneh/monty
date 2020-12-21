@@ -8,49 +8,45 @@
  */
 int delete_dnodeint_at_index(stack_t **head, unsigned int index)
 {
-    stack_t *temp = *head;
-    unsigned int i = 0;
+	stack_t *temp = *head;
+	unsigned int i = 0;
 
-    if (!head || !*head)
-    {
-        return (-1);
-    }
-    if (index == 0)
-    {
-        *head = (*head)->next;
-        if (*head)
-        {
-            (*head)->prev = NULL;
-        }
-        free(temp);
-        return (1);
-    }
-    while (temp)
-    {
-        temp = temp->next;
-        i++;
-    }
-    if (index >= i)
-    {
-        return (-1);
-    }
-    temp = *head;
-    while (temp && temp->next)
-    {
-        if (index == 0)
-        {
-            break;
-        }
-        index--;
-        temp = temp->next;
-    }
-    temp->prev->next = temp->next;
-    if (temp->next)
-    {
-        temp->next->prev = temp->prev;
-    }
-    free(temp);
-    return (1);
+	if (!head || !*head)
+	{
+		return (-1);
+	}
+	if (index == 0)
+	{
+		*head = (*head)->next;
+		if (*head)
+		{
+			(*head)->prev = NULL;
+		}
+		free(temp);
+		return (1);
+	}
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	if (index >= i)
+	{
+		return (-1);
+	}
+	temp = *head;
+	while (temp && temp->next)
+	{
+		if (index == 0)
+			break;
+		index--;
+		temp = temp->next;
+	}
+	temp->prev->next = temp->next;
+	if (temp->next)
+		temp->next->prev = temp->prev;
+	free(temp);
+	return (1);
 }
 
 /**
@@ -60,14 +56,14 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index)
  */
 void free_dlistint(stack_t *head)
 {
-    stack_t *temp = head;
+	stack_t *temp = head;
 
-    while (head)
-    {
-        head = head->next;
-        free(temp);
-        temp = head;
-    }
+	while (head)
+	{
+		head = head->next;
+		free(temp);
+		temp = head;
+	}
 }
 
 /**
@@ -77,14 +73,14 @@ void free_dlistint(stack_t *head)
  */
 size_t stack_size(const stack_t *h)
 {
-    size_t c = 0;
+	size_t c = 0;
 
-    while (h)
-    {
-        c++;
-        h = h->next;
-    }
-    return (c);
+	while (h)
+	{
+		c++;
+		h = h->next;
+	}
+	return (c);
 }
 
 /**
@@ -94,15 +90,15 @@ size_t stack_size(const stack_t *h)
  */
 size_t print_dlistint(const stack_t *h)
 {
-    size_t character = 0;
+	size_t character = 0;
 
-    while (h)
-    {
-        character++;
-        printf("%d\n", h->n);
-        h = h->next;
-    }
-    return (character);
+	while (h)
+	{
+		character++;
+		printf("%d\n", h->n);
+		h = h->next;
+	}
+	return (character);
 }
 
 /**
@@ -113,22 +109,22 @@ size_t print_dlistint(const stack_t *h)
  */
 stack_t *add_dnodeint(stack_t **head, const int n)
 {
-    stack_t *new_node = NULL;
-    
-    new_node = malloc(sizeof(stack_t));
-    if (!new_node)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        cleaner();
-        exit(EXIT_FAILURE);
-    }
-    new_node->n = n;
-    new_node->prev = NULL;
-    new_node->next = *head;
-    if (*head)
-    {
-        (*head)->prev = new_node;
-    }
-    *head = new_node;
-    return (new_node);
+	stack_t *new_node = NULL;
+
+	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		cleaner();
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = n;
+	new_node->prev = NULL;
+	new_node->next = *head;
+	if (*head)
+	{
+		(*head)->prev = new_node;
+	}
+	*head = new_node;
+	return (new_node);
 }
